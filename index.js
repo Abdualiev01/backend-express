@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const { connect } = require("./db");
 const authRoute = require("./Routes/authRoutes");
+require("dotenv").config();
 const app = express();
 
 app.get("/", (req, res) => {
@@ -16,7 +17,7 @@ connect()
     app.use("/auth", authRoute);
 
     const port = process.env.PORT || 3000;
-    app.listen(3000, () => {
+    app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
   })
